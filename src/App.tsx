@@ -1,24 +1,33 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState } from 'react';
+import { InputGroup } from 'react-bootstrap';
 
-function App() {
+import cat from './cat.png';
+import './App.css';
+
+const App = () => {
+  const [checked, setChecked] = useState(false);
+  const handleCheckboxChange = ({ target: { value } }: { target: object; value: boolean }) => {
+    console.log(value);
+    // setChecked()
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className='App'>
+      <header className='App-header'>
+        <img src={cat} className='App-logo' alt='logo' />
         <p>Toolkit todo app</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <InputGroup size='lg' className='mb-3' id='first-checkbox'>
+          <InputGroup.Text id='inputGroup-sizing-lg'>Large</InputGroup.Text>
+          <InputGroup.Checkbox
+            aria-label='Checkbox for following text input'
+            onChange={handleCheckboxChange}
+            checked={checked}
+          />
+        </InputGroup>
       </header>
     </div>
   );
-}
+};
 
 export default App;
