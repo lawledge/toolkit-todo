@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
     'react/function-component-definition': [
       2,
@@ -94,7 +94,6 @@ module.exports = {
     'function-paren-newline': 0,
     'object-curly-newline': 0,
     'object-curly-spacing': 0,
-    'babel/object-curly-spacing': 0,
     'no-restricted-globals': 0,
     'no-underscore-dangle': 0,
     'template-tag-spacing': 0,
