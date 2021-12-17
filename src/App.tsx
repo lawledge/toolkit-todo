@@ -6,8 +6,8 @@ import './App.css';
 
 const App = () => {
   const [checked, setChecked] = useState(false);
-  const handleCheckboxChange = ({ target: { value } }: { target: object; value: boolean }) => {
-    console.log(value);
+  const handleCheckboxChange = (event: MouseEvent) => {
+    // console.log(value);
     // setChecked()
   };
 
