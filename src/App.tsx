@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import { InputGroup } from 'react-bootstrap';
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import { decrement, increment } from './store/counterSlice';
 
 import cat from './cat.png';
 import './App.css';
 
 const App = () => {
   const [checked, setChecked] = useState(false);
-  const handleCheckboxChange = (event: MouseEvent) => {
-    // console.log(value);
-    // setChecked()
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target);
+    setChecked(!checked);
   };
+
+  // const count = useAppSelector(state => state.counter.value);
+  const dispatch = useAppDispatch();
+
+  // console.log(count);
+  // useEffect(() => {
+  //   dispatch(1);
+  // });
 
   return (
     <div className='App'>
