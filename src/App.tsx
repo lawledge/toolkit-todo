@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import { InputGroup } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from './store/hooks';
-import { decrement, increment } from './store/counterSlice';
+import { decrement, increment, counterSlice } from './store/counterSlice';
 
 import cat from './cat.png';
 import './App.css';
@@ -15,11 +15,11 @@ const App = () => {
 
   // const count = useAppSelector(state => state.counter.value);
   const dispatch = useAppDispatch();
+  const count = useAppSelector(state => state.counter);
 
-  // console.log(count);
-  // useEffect(() => {
-  //   dispatch(1);
-  // });
+  useEffect(() => {
+    if (count) console.log(count);
+  }, [count]);
 
   return (
     <div className='App'>
@@ -28,12 +28,15 @@ const App = () => {
         <p>Toolkit todo app</p>
 
         <InputGroup size='lg' className='mb-3' id='first-checkbox'>
-          <InputGroup.Text id='inputGroup-sizing-lg'>Large</InputGroup.Text>
-          <InputGroup.Checkbox
+          <button onClick={() => dispatch(decrement())}>-</button>
+
+          <InputGroup.Text id='inputGroup-sizing-lg'>{count.value}</InputGroup.Text>
+          {/* <InputGroup.Checkbox
             aria-label='Checkbox for following text input'
             onChange={handleCheckboxChange}
             checked={checked}
-          />
+          /> */}
+          <button onClick={() => dispatch(increment())}>+</button>
         </InputGroup>
       </header>
     </div>
