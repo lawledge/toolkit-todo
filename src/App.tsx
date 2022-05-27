@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import { InputGroup } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from './store/hooks';
-import { decrement, increment, counterSlice } from './store/counterSlice';
+import { decrement, increment, counterSlice, selectCounterValue } from './store/counterSlice';
 
 import cat from './cat.png';
 import './App.css';
@@ -15,8 +15,10 @@ const App = () => {
 
   // const count = useAppSelector(state => state.counter.value);
   const dispatch = useAppDispatch();
-  const count = useAppSelector(state => state.counter);
+  // const count = useAppSelector(state => state.counter);
+  const count = useAppSelector(selectCounterValue);
 
+  console.log(count);
   useEffect(() => {
     if (count) console.log(count);
   }, [count]);
@@ -30,7 +32,7 @@ const App = () => {
         <InputGroup size='lg' className='mb-3' id='first-checkbox'>
           <button onClick={() => dispatch(decrement())}>-</button>
 
-          <InputGroup.Text id='inputGroup-sizing-lg'>{count.value}</InputGroup.Text>
+          <InputGroup.Text id='inputGroup-sizing-lg'>{count}</InputGroup.Text>
           {/* <InputGroup.Checkbox
             aria-label='Checkbox for following text input'
             onChange={handleCheckboxChange}
